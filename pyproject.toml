@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "web-test-lib"
+version = "0.0.0"
+description = "UI integration test suite"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=9.0.0",
+    "pytest-playwright>=0.7.2",
+    "pandas>=2.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.0",
+    "isort>=7.0.0",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py310', 'py312']
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.pytest.ini_options]
+addopts = "--verbose --no-header"
+console_output_style = "count"
+log_level = "DEBUG"
+log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s - %(levelname)s - %(message)s"
+log_file_date_format = "%Y-%m-%d %H:%M:%S,%f"
+testpaths = ["tests"]
+python_files = "test*.py"
+python_classes = "Test*"
+python_functions = "test*"
